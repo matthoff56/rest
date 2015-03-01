@@ -2,15 +2,14 @@
 class Server {
     /* The array key works as id and is used in the URL
        to identify the resource.
-    */
-    private $corals = array('frogspawn' => array('price' => '$59.99', 'url' => '/corals/frogspawn'),
-                              'birdsnest' => array('price' => '$100.00', 'url'=> '/corals/birdsnest')
+     */
+        private $corals = array('birdsnest' => array('price' => '$100.00', 'url'=> '/corals/birdsnest')
 );
 
     public function serve() {
 
-        $uri = $_SERVER['http://54.173.55.247:80/'];
-        $method = $_SERVER['GET','PUT','DELETE'];
+        $uri = $_SERVER['REQUEST_URI'];
+        $method = $_SERVER['REQUEST_METHOD'];
         $paths = explode('/', $this->paths($uri));
         array_shift($paths); // Hack; get rid of initials empty string
         $resource = array_shift($paths);
@@ -116,4 +115,3 @@ $server = new Server;
 $server->serve();
 
 ?>
-       
