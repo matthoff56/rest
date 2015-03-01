@@ -10,7 +10,7 @@ class Server {
     public function serve() {
 
         $uri = $_SERVER['http://54.173.55.247:80/'];
-        $method = $_SERVER['GET'];
+        $method = $_SERVER['GET','PUT','DELETE'];
         $paths = explode('/', $this->paths($uri));
         array_shift($paths); // Hack; get rid of initials empty string
         $resource = array_shift($paths);
